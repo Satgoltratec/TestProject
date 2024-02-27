@@ -44,7 +44,7 @@ const RootStack = createStackNavigator<RootStackParamList>();
 function App(): React.JSX.Element {
   return (
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName="ProjectListScreen">
+      <RootStack.Navigator initialRouteName="CustomerListScreen">
         <RootStack.Screen
           name="ProjectListScreen"
           component={ProjectListScreen}

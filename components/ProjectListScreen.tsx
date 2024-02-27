@@ -46,11 +46,10 @@ function ProjectListScreen({navigation}: ProjectListProps) {
                 borderColor: '#e0e0e0',
                 backgroundColor: index % 2 === 0 ? 'white' : '#f0f0f0',
               }}>
-              <Pressable key={project.id}>
-                <Text style={{fontSize: 12, padding: 5, fontWeight: 'bold'}}>
-                  {project.customer}
-                </Text>
-              </Pressable>
+              <Text style={{fontSize: 12, padding: 5, fontWeight: 'bold'}}>
+                {project.customer}
+              </Text>
+
               <Text style={{fontSize: 15, padding: 8}}>{project.name} </Text>
             </View>
           </Pressable>
