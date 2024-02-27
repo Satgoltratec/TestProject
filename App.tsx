@@ -8,12 +8,15 @@
 import LoginScreen from './components/LoginScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import {RegisterScreen} from './components/RegisterScreen';
 import {LOPDScreen} from './components/LOPDScreen';
 import {RecoverPassScreen} from './components/RecoverPassScreen';
 import ProjectListScreen from './components/ProjectListScreen';
 import CustomerListScreen from './components/CustomerListScreen';
+import CustomerDetailsScreen from './components/CustomerDetailsScreen';
+import ProjectDetailsScreen from './components/ProjectDetailsScreen';
 
 export type RootStackParamList = {
   LoginScreen: undefined;
@@ -21,9 +24,22 @@ export type RootStackParamList = {
   RegisterScreen: undefined;
   RecoverPassScreen: undefined;
   ProjectListScreen: undefined;
+  ProjectDetailsScreen: {id: number};
   CustomerListScreen: undefined;
+  CustomerDetailsScreen: {id: number};
 };
 const RootStack = createStackNavigator<RootStackParamList>();
+
+// const Drawer = createDrawerNavigator();
+
+// function MyDrawer() {
+//   return (
+//     <Drawer.Navigator>
+//       <Drawer.Screen name="Proyectos" component={ProjectListScreen} />
+//       <Drawer.Screen name="Clientes" component={ProjectListScreen} />
+//     </Drawer.Navigator>
+//   );
+// }
 
 function App(): React.JSX.Element {
   return (
@@ -35,9 +51,19 @@ function App(): React.JSX.Element {
           options={{title: 'Listado de Proyectos'}}
         />
         <RootStack.Screen
+          name="ProjectDetailsScreen"
+          component={ProjectDetailsScreen}
+          options={{title: 'Detalle del Proyecto'}}
+        />
+        <RootStack.Screen
           name="CustomerListScreen"
           component={CustomerListScreen}
           options={{title: 'Listado de Clientes'}}
+        />
+        <RootStack.Screen
+          name="CustomerDetailsScreen"
+          component={CustomerDetailsScreen}
+          options={{title: 'Detalle del Cliente'}}
         />
         <RootStack.Screen
           name="LoginScreen"
