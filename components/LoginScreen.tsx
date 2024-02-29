@@ -6,6 +6,7 @@ import {
   View,
   TextInput,
   Button,
+  TouchableOpacity,
 } from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../App';
@@ -39,12 +40,13 @@ export function LoginScreen({navigation}: LoginScreenProps) {
             placeholder="Introduzca Contraseña"
           />
           <View style={{padding: 7}}>
-            <Button
-              onPress={() => navigation.navigate('RecoverPassScreen')}
-              title="He olvidado mi contraseña"
-            />
+            <Pressable onPress={() => navigation.navigate('RecoverPassScreen')}>
+              <Text>He olvidado mi contraseña </Text>
+            </Pressable>
+            <Button title="Entrar" />
           </View>
         </View>
+
         <View style={styles.bottomMenu}>
           {/* Barra Inferior */}
 

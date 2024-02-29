@@ -11,12 +11,16 @@ import {
   TextInput,
   ActivityIndicator,
 } from 'react-native';
+import {RootStackParamList} from '../App';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-// type HomeProps = NativeStackScreenProps<RootStackParamsList, 'RegisterScreen'>;
+type RegisterProps = NativeStackScreenProps<
+  RootStackParamList,
+  'RegisterScreen'
+>;
 
-export function RegisterScreen() {
+export function RegisterScreen({navigation}: RegisterProps) {
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -43,6 +47,7 @@ export function RegisterScreen() {
           />
           <Text style={{padding: 7}}>Repita Contraseña</Text>
           <TextInput style={{borderWidth: 1}} placeholder="escriba de nuevo" />
+          <Button onPress={() => navigation.goBack()} title="Aceptar" />
         </View>
 
         <View style={styles.bottomMenu}>
