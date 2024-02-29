@@ -9,7 +9,6 @@ import 'react-native-gesture-handler';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import LoginScreen from './components/LoginScreen';
 import {RegisterScreen} from './components/RegisterScreen';
@@ -31,36 +30,88 @@ export type RootStackParamList = {
   ProjectDetailsScreen: {id: number};
   CustomerListScreen: undefined;
   CustomerDetailsScreen: {id: number};
-  Root: undefined;
+  CustomerStack: undefined;
+  ProjectStack: undefined;
+  Drawer: undefined;
+  Guest: undefined;
 };
 
-// export type RootDrawerParamList = {
-
-// }
 const RootStack = createStackNavigator<RootStackParamList>();
-const Drawer = createDrawerNavigator<RootStackParamList>();
-// const Tab = createBottomTabNavigator<RootStackParamList>()();
+const RootDrawer = createDrawerNavigator<RootStackParamList>();
 
-function Root() {
+function CustomerStack() {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen
+    <RootStack.Navigator initialRouteName="CustomerListScreen">
+      <RootStack.Screen
+        name="CustomerListScreen"
+        component={CustomerListScreen}
+        options={{title: 'Listado de Clientes', headerShown: false}}
+      />
+      <RootStack.Screen
+        name="CustomerDetailsScreen"
+        component={CustomerDetailsScreen}
+        options={{title: 'Detalle del Cliente'}}
+      />
+    </RootStack.Navigator>
+  );
+}
+function ProjectStack() {
+  return (
+    <RootStack.Navigator initialRouteName="ProjectListScreen">
+      <RootStack.Screen
+        name="ProjectListScreen"
+        component={ProjectListScreen}
+        options={{title: 'Listado de Proyectos', headerShown: false}}
+      />
+      <RootStack.Screen
+        name="ProjectDetailsScreen"
+        component={ProjectDetailsScreen}
+        options={{title: 'Detalle del Proyecto'}}
+      />
+    </RootStack.Navigator>
+  );
+}
+function Drawer() {
+  return (
+    <RootDrawer.Navigator>
+      <RootDrawer.Screen
         name="HomeScreen"
         component={HomeScreen}
         options={{title: 'Inicio'}}
       />
-
-      <Drawer.Screen
-        name="CustomerListScreen"
-        component={CustomerListScreen}
+      <RootDrawer.Screen
+        name="CustomerStack"
+        component={CustomerStack}
         options={{title: 'Listado de Clientes'}}
       />
-      <Drawer.Screen
-        name="ProjectListScreen"
-        component={ProjectListScreen}
+      <RootDrawer.Screen
+        name="ProjectStack"
+        component={ProjectStack}
         options={{title: 'Listado de Proyectos'}}
       />
-    </Drawer.Navigator>
+    </RootDrawer.Navigator>
+  );
+}
+
+function Guest() {
+  return (
+    <RootStack.Navigator>
+      <RootStack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{title: 'Inicio de sesión'}}
+      />
+      <RootStack.Screen
+        name="RegisterScreen"
+        component={RegisterScreen}
+        options={{title: 'Registro'}}
+      />
+      <RootStack.Screen
+        name="RecoverPassScreen"
+        component={RecoverPassScreen}
+        options={{title: 'Restablecer Contraseña'}}
+      />
+    </RootStack.Navigator>
   );
 }
 
@@ -69,39 +120,21 @@ function App(): React.JSX.Element {
   return (
     <>
       <NavigationContainer>
-        <RootStack.Navigator initialRouteName="ProjectListScreen">
+        <RootStack.Navigator>
           {signedIn ? (
             <>
-              <RootStack.Screen name="Root" component={Root} />
-
               <RootStack.Screen
-                name="ProjectDetailsScreen"
-                component={ProjectDetailsScreen}
-                options={{title: 'Detalle del Proyecto'}}
-              />
-
-              <RootStack.Screen
-                name="CustomerDetailsScreen"
-                component={CustomerDetailsScreen}
-                options={{title: 'Detalle del Cliente'}}
+                name="Drawer"
+                component={Drawer}
+                options={{headerShown: false}}
               />
             </>
           ) : (
             <>
               <RootStack.Screen
-                name="LoginScreen"
-                component={LoginScreen}
-                options={{title: 'Inicio de sesión'}}
-              />
-              <RootStack.Screen
-                name="RegisterScreen"
-                component={RegisterScreen}
-                options={{title: 'Registro'}}
-              />
-              <RootStack.Screen
-                name="RecoverPassScreen"
-                component={RecoverPassScreen}
-                options={{title: 'Restablecer Contraseña'}}
+                name="Guest"
+                component={Guest}
+                options={{headerShown: false}}
               />
             </>
           )}
