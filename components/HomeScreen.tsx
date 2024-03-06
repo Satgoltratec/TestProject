@@ -1,18 +1,10 @@
-import {
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Button,
-} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../App';
+import {RootStackParamList} from './MainNavigation';
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'HomeScreen'>;
 
-export function HomeScreen({navigation}: HomeScreenProps) {
+export function HomeScreen() {
   return (
     <SafeAreaView>
       <View

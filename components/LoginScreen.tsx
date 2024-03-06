@@ -8,8 +8,11 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+import {useState, useContext} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../App';
+import {RootStackParamList} from './MainNavigation';
+import React from 'react';
+import {AuthContext} from './context/AuthContext';
 
 type LoginScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -17,6 +20,8 @@ type LoginScreenProps = NativeStackScreenProps<
 >;
 
 export function LoginScreen({navigation}: LoginScreenProps) {
+  const {signedIn, login} = useContext(AuthContext);
+
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -43,7 +48,10 @@ export function LoginScreen({navigation}: LoginScreenProps) {
             <Pressable onPress={() => navigation.navigate('RecoverPassScreen')}>
               <Text>He olvidado mi contraseña </Text>
             </Pressable>
-            <Button title="Entrar" />
+            <Button
+              title="Entrar"
+              onPress={() => login('miusuario', 'micontraseña')}
+            />
           </View>
         </View>
 

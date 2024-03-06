@@ -1,7 +1,7 @@
 import {View, SafeAreaView, Text, TextInput, TextBase} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import {RootStackParamList} from '../App';
+import {RootStackParamList} from './MainNavigation';
 import {projects} from './data/projects';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 

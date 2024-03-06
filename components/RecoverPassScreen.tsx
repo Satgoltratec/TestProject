@@ -7,7 +7,7 @@ import {
   View,
   TextInput,
 } from 'react-native';
-import {RootStackParamList} from '../App';
+import {RootStackParamList} from './MainNavigation';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 

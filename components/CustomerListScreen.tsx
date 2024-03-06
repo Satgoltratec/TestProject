@@ -3,8 +3,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 
 import {customers} from './data/customers';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../App';
-
+import {RootStackParamList} from './MainNavigation';
 type CustomerListProps = NativeStackScreenProps<
   RootStackParamList,
   'CustomerListScreen'
