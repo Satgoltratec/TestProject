@@ -1,10 +1,14 @@
 import {SafeAreaView, View} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from './MainNavigation';
 
-type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'HomeScreen'>;
+import {LoggedInStackParamList} from '../navigation';
 
-export function HomeScreen() {
+type HomeScreenProps = NativeStackScreenProps<
+  LoggedInStackParamList,
+  'HomeScreen'
+>;
+
+export const HomeScreen = () => {
   return (
     <SafeAreaView>
       <View
@@ -13,6 +17,4 @@ export function HomeScreen() {
         }}></View>
     </SafeAreaView>
   );
-}
-
-export default HomeScreen;
+};

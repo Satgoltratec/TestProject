@@ -1,18 +1,17 @@
 import {View, SafeAreaView, Text, TextInput} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-
-import {RootStackParamList} from './MainNavigation';
-import {customers} from './data/customers';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-type CustomerScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  'CustomerDetailsScreen'
+import {customers} from '../../../data/customers';
+import {CustomerStackParamList} from '../../navigation';
+
+type DetailCustomersProps = NativeStackScreenProps<
+  CustomerStackParamList,
+  'DetailCustomers'
 >;
 
-function CustomerDetailsScreen({navigation, route}: CustomerScreenProps) {
+export const DetailCustomers = ({navigation, route}: DetailCustomersProps) => {
   const data = customers.find(customer => customer.id === route.params.id);
-
   return (
     <SafeAreaView style={{flex: 1}}>
       <SafeAreaView style={{flex: 1}}>
@@ -53,6 +52,4 @@ function CustomerDetailsScreen({navigation, route}: CustomerScreenProps) {
       </SafeAreaView>
     </SafeAreaView>
   );
-}
-
-export default CustomerDetailsScreen;
+};

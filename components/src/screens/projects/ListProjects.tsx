@@ -1,16 +1,16 @@
 import {View, SafeAreaView, Text, TextInput, Pressable} from 'react-native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import {RootStackParamList} from './MainNavigation';
-import {projects} from './data/projects';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {ProjectStackParamList} from '../../navigation';
+import {projects} from '../../../data/projects';
 
-type ProjectListProps = NativeStackScreenProps<
-  RootStackParamList,
-  'ProjectListScreen'
+type ListProjectsProps = NativeStackScreenProps<
+  ProjectStackParamList,
+  'ListProjects'
 >;
 
-function ProjectListScreen({navigation}: ProjectListProps) {
+export const ListProjects = ({navigation}: ListProjectsProps) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flexGrow: 1}}>
@@ -37,7 +37,7 @@ function ProjectListScreen({navigation}: ProjectListProps) {
           <Pressable
             key={project.id}
             onPress={() =>
-              navigation.navigate('ProjectDetailsScreen', {id: project.id})
+              navigation.navigate('DetailProjects', {id: project.id})
             }>
             <View
               key={project.id}
@@ -57,6 +57,4 @@ function ProjectListScreen({navigation}: ProjectListProps) {
       </ScrollView>
     </SafeAreaView>
   );
-}
-
-export default ProjectListScreen;
+};

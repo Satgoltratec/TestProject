@@ -1,26 +1,29 @@
 import {
-  Alert,
-  Button,
-  Image,
   Pressable,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   View,
   TextInput,
-  ActivityIndicator,
+  Button,
+  TouchableOpacity,
 } from 'react-native';
-import {RootStackParamList} from './MainNavigation';
-
+import {useState, useContext} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-type RegisterProps = NativeStackScreenProps<
-  RootStackParamList,
-  'RegisterScreen'
+import React from 'react';
+import {AuthContext} from '../../context/AuthContext';
+import {GuestStackParamList} from '../navigation';
+import {LOPDScreen} from './LOPDScreen';
+
+type LoginScreenProps = NativeStackScreenProps<
+  GuestStackParamList,
+  'LoginScreen'
 >;
 
-export function RegisterScreen({navigation}: RegisterProps) {
+export function LoginScreen({navigation}: LoginScreenProps) {
+  const {signedIn, login} = useContext(AuthContext);
+
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -33,8 +36,6 @@ export function RegisterScreen({navigation}: RegisterProps) {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Text style={{padding: 7}}>Correo electronico</Text>
-          <TextInput style={{borderWidth: 1}} placeholder="Introduzca Correo" />
           <Text style={{padding: 7}}>Usuario</Text>
           <TextInput
             style={{borderWidth: 1}}
@@ -45,14 +46,20 @@ export function RegisterScreen({navigation}: RegisterProps) {
             style={{borderWidth: 1}}
             placeholder="Introduzca Contraseña"
           />
-          <Text style={{padding: 7}}>Repita Contraseña</Text>
-          <TextInput style={{borderWidth: 1}} placeholder="escriba de nuevo" />
-          <Button onPress={() => navigation.goBack()} title="Aceptar" />
+          <View style={{padding: 7}}>
+            <Pressable onPress={() => navigation.navigate('RecoverPassScreen')}>
+              <Text>He olvidado mi contraseña </Text>
+            </Pressable>
+            <Button
+              title="Entrar"
+              onPress={() => login('miusuario', 'micontraseña')}
+            />
+          </View>
         </View>
 
         <View style={styles.bottomMenu}>
           {/* Barra Inferior */}
-          {/* 
+
           <Pressable
             style={styles.itemBotton}
             onPress={() => navigation.navigate('LOPDScreen')}>
@@ -62,11 +69,11 @@ export function RegisterScreen({navigation}: RegisterProps) {
           </Pressable>
           <Pressable
             style={styles.itemBotton}
-            onPress={() => navigation.navigate('LoginScreen')}>
+            onPress={() => navigation.navigate('RegisterScreen')}>
             <View>
-              <Text>Login</Text>
+              <Text>Registrarse</Text>
             </View>
-          </Pressable> */}
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>
@@ -134,3 +141,5 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
+
+export default LoginScreen;

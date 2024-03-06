@@ -7,12 +7,12 @@ import {
   View,
   TextInput,
 } from 'react-native';
-import {RootStackParamList} from './MainNavigation';
 
+import {GuestStackParamList} from '../navigation';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 type RecoverPassProps = NativeStackScreenProps<
-  RootStackParamList,
+  GuestStackParamList,
   'RecoverPassScreen'
 >;
 

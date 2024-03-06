@@ -1,27 +1,21 @@
 import {
-  Pressable,
+  Button,
   SafeAreaView,
   StyleSheet,
   Text,
   View,
   TextInput,
-  Button,
-  TouchableOpacity,
 } from 'react-native';
-import {useState, useContext} from 'react';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from './MainNavigation';
-import React from 'react';
-import {AuthContext} from './context/AuthContext';
 
-type LoginScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  'LoginScreen'
+import {GuestStackParamList} from '../navigation';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+
+type RegisterProps = NativeStackScreenProps<
+  GuestStackParamList,
+  'RegisterScreen'
 >;
 
-export function LoginScreen({navigation}: LoginScreenProps) {
-  const {signedIn, login} = useContext(AuthContext);
-
+export function RegisterScreen({navigation}: RegisterProps) {
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -34,6 +28,8 @@ export function LoginScreen({navigation}: LoginScreenProps) {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
+          <Text style={{padding: 7}}>Correo electronico</Text>
+          <TextInput style={{borderWidth: 1}} placeholder="Introduzca Correo" />
           <Text style={{padding: 7}}>Usuario</Text>
           <TextInput
             style={{borderWidth: 1}}
@@ -44,35 +40,12 @@ export function LoginScreen({navigation}: LoginScreenProps) {
             style={{borderWidth: 1}}
             placeholder="Introduzca Contraseña"
           />
-          <View style={{padding: 7}}>
-            <Pressable onPress={() => navigation.navigate('RecoverPassScreen')}>
-              <Text>He olvidado mi contraseña </Text>
-            </Pressable>
-            <Button
-              title="Entrar"
-              onPress={() => login('miusuario', 'micontraseña')}
-            />
-          </View>
+          <Text style={{padding: 7}}>Repita Contraseña</Text>
+          <TextInput style={{borderWidth: 1}} placeholder="escriba de nuevo" />
+          <Button onPress={() => navigation.goBack()} title="Aceptar" />
         </View>
 
-        <View style={styles.bottomMenu}>
-          {/* Barra Inferior */}
-
-          <Pressable
-            style={styles.itemBotton}
-            onPress={() => navigation.navigate('LOPDScreen')}>
-            <View>
-              <Text>LOPD</Text>
-            </View>
-          </Pressable>
-          <Pressable
-            style={styles.itemBotton}
-            onPress={() => navigation.navigate('RegisterScreen')}>
-            <View>
-              <Text>Registrarse</Text>
-            </View>
-          </Pressable>
-        </View>
+        <View style={styles.bottomMenu}></View>
       </View>
     </SafeAreaView>
   );
@@ -139,5 +112,3 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
-export default LoginScreen;

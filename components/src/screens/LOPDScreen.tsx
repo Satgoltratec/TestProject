@@ -1,7 +1,8 @@
 import {Button, Text, View} from 'react-native';
 
+import {RootStackParamList} from '../navigation';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from './MainNavigation';
+
 type LPODProps = NativeStackScreenProps<RootStackParamList, 'LOPDScreen'>;
 
 export function LOPDScreen({navigation}: LPODProps) {

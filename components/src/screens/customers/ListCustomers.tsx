@@ -1,15 +1,16 @@
 import {View, SafeAreaView, Text, TextInput, Pressable} from 'react-native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import {customers} from './data/customers';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from './MainNavigation';
-type CustomerListProps = NativeStackScreenProps<
-  RootStackParamList,
-  'CustomerListScreen'
+import {CustomerStackParamList} from '../../navigation';
+import {customers} from '../../../data/customers';
+
+type ListCustomersProps = NativeStackScreenProps<
+  CustomerStackParamList,
+  'ListCustomers'
 >;
 
-function CustomerListScreen({navigation}: CustomerListProps) {
+export const ListCustomers = ({navigation}: ListCustomersProps) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <TextInput
@@ -34,7 +35,7 @@ function CustomerListScreen({navigation}: CustomerListProps) {
           <Pressable
             key={customer.id}
             onPress={() =>
-              navigation.navigate('CustomerDetailsScreen', {id: customer.id})
+              navigation.navigate('DetailCustomers', {id: customer.id})
             }>
             <View
               key={customer.id}
@@ -50,6 +51,4 @@ function CustomerListScreen({navigation}: CustomerListProps) {
       </ScrollView>
     </SafeAreaView>
   );
-}
-
-export default CustomerListScreen;
+};

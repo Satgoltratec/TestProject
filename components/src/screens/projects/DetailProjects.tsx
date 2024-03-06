@@ -1,16 +1,16 @@
-import {View, SafeAreaView, Text, TextInput, TextBase} from 'react-native';
+import {View, SafeAreaView, Text} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-
-import {RootStackParamList} from './MainNavigation';
-import {projects} from './data/projects';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-type DetailsScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  'ProjectDetailsScreen'
+import {ProjectStackParamList} from '../../navigation';
+import {projects} from '../../../data/projects';
+
+type DetailProjectsProps = NativeStackScreenProps<
+  ProjectStackParamList,
+  'DetailProjects'
 >;
 
-function ProjectDetailsScreen({navigation, route}: DetailsScreenProps) {
+export const DetailProjects = ({navigation, route}: DetailProjectsProps) => {
   const data = projects.find(project => project.id === route.params.id);
 
   return (
@@ -38,6 +38,4 @@ function ProjectDetailsScreen({navigation, route}: DetailsScreenProps) {
       </ScrollView>
     </SafeAreaView>
   );
-}
-
-export default ProjectDetailsScreen;
+};
