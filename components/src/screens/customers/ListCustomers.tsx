@@ -1,4 +1,11 @@
-import {View, SafeAreaView, Text, TextInput, Pressable} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Text,
+  TextInput,
+  Pressable,
+  Button,
+} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {ScrollView} from 'react-native-gesture-handler';
 
@@ -30,6 +37,7 @@ export const ListCustomers = ({navigation}: ListCustomersProps) => {
         }}
         placeholder="Buscar Cliente"
       />
+
       <ScrollView style={{padding: 7}}>
         {customers?.map((customer, index) => (
           <Pressable

@@ -48,12 +48,12 @@ export const LoggedInNavigator = () => {
       <RootDrawer.Screen
         name="CustomerStackNavigator"
         component={CustomerStackNavigator}
-        options={{title: 'Listado de Clientes'}}
+        options={{title: 'Clientes'}}
       />
       <RootDrawer.Screen
         name="ProjectStackNavigator"
         component={ProjectStackNavigator}
-        options={{title: 'Listado de Proyectos'}}
+        options={{title: 'Proyectos'}}
       />
     </RootDrawer.Navigator>
   );
