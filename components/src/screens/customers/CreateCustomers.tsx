@@ -6,8 +6,13 @@ import {
   Text,
   TextInput,
   View,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 import {CustomerStackParamList} from '../../navigation';
+import {ScrollView} from 'react-native-gesture-handler';
 
 type CreateCustomersProps = NativeStackScreenProps<
   CustomerStackParamList,
@@ -17,43 +22,63 @@ type CreateCustomersProps = NativeStackScreenProps<
 export const CreateCustomers = ({navigation, route}: CreateCustomersProps) => {
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          flex: 1,
-        }}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text style={{padding: 7}}>Nombre</Text>
-          <TextInput style={{borderWidth: 1}} placeholder="Introduzca nombre" />
-          <Text style={{padding: 7}}>DNI</Text>
-          <TextInput style={{borderWidth: 1}} placeholder="Introduzca DNI" />
-          <Text style={{padding: 7}}>Dirección</Text>
-          <TextInput
-            style={{borderWidth: 1}}
-            placeholder="Introduzca dirección"
-          />
-          <Text style={{padding: 7}}>Código Postal</Text>
-          <TextInput
-            style={{borderWidth: 1}}
-            placeholder="Escriba código postal"
-          />
-          <Text style={{padding: 7}}>Localidad</Text>
-          <TextInput style={{borderWidth: 1}} placeholder="Escriba localidad" />
-          <Text style={{padding: 7}}>Provincia</Text>
-          <TextInput style={{borderWidth: 1}} placeholder="Escriba provincia" />
-          <Text style={{padding: 7}}>Pais</Text>
-          <TextInput style={{borderWidth: 1}} placeholder="Escriba pais" />
-          <Text style={{padding: 7}}>Teléfono</Text>
-          <TextInput style={{borderWidth: 1}} placeholder="Escriba telefono" />
-          <Button title="Aceptar" />
-        </View>
+      <KeyboardAvoidingView
+        style={{flex: 1}}
+        behavior="padding"
+        enabled
+        keyboardVerticalOffset={150}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <ScrollView>
+            <View style={styles.inner}>
+              <Text>Nombre</Text>
+              <TextInput
+                placeholder="Introduzca nombre"
+                style={styles.textInput}
+              />
+              <Text>DNI</Text>
+              <TextInput
+                placeholder="Introduzca DNI"
+                style={styles.textInput}
+              />
+              <Text>Dirección</Text>
+              <TextInput
+                placeholder="Introduzca Dirección"
+                style={styles.textInput}
+              />
+              <Text>Código Postal</Text>
+              <TextInput
+                placeholder="Introduzca Código Postal"
+                style={styles.textInput}
+              />
+              <Text>Localidad</Text>
+              <TextInput
+                placeholder="Introduzca Localidad"
+                style={styles.textInput}
+              />
+              <Text>Provincia</Text>
+              <TextInput
+                placeholder="Introduzca Provincia"
+                style={styles.textInput}
+              />
+              <Text>País</Text>
+              <TextInput
+                placeholder="Introduzca País"
+                style={styles.textInput}
+              />
+              <Text>Teléfono</Text>
+              <TextInput
+                placeholder="Introduzca Teléfono"
+                style={styles.textInput}
+                keyboardType="numeric"
+              />
 
-        <View style={styles.bottomMenu}></View>
-      </View>
+              <View style={styles.btnContainer}>
+                <Button title="Crear" onPress={() => null} />
+              </View>
+            </View>
+          </ScrollView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
@@ -62,60 +87,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  search: {
-    flexDirection: 'row',
-    backgroundColor: '#f7f7f7',
-    height: 50,
+  inner: {
+    padding: 24,
+    flex: 1,
+    justifyContent: 'space-around',
   },
-  items: {
-    flexDirection: 'row', // Items horizontalmente
-    height: 50,
-    backgroundColor: 'tomato',
-    borderBottomColor: '#f9f9f9',
+  header: {
+    fontSize: 36,
+    marginBottom: 48,
   },
-  itemsBotton: {
-    flexDirection: 'row', // Items horizontalmente
-    height: 50,
+  textInput: {
+    height: 40,
+    borderColor: '#000000',
+    borderBottomWidth: 1,
+    marginBottom: 36,
   },
-  item: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexGrow: 1,
-    paddingHorizontal: 10,
-  },
-  itemBotton: {
-    borderTopColor: '#d7d7d7',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexGrow: 1,
-  },
-
-  scrollViewContent: {
-    backgroundColor: '#ffffff',
-  },
-  bottomMenu: {
-    backgroundColor: '#ffffff',
-    height: 50,
-    flexDirection: 'row',
-  },
-  buttonMap: {
-    position: 'absolute',
-    bottom: 74,
-    paddingHorizontal: 20,
-    backgroundColor: 'black',
-    borderRadius: 20,
-    elevation: 3,
-    width: 120,
-    left: '50%',
-    marginLeft: -60,
-    alignItems: 'center',
-  },
-  textButton: {
-    fontSize: 15,
-    lineHeight: 21,
-    paddingVertical: 12,
-    fontWeight: 'bold',
-
-    color: 'white',
+  btnContainer: {
+    backgroundColor: 'white',
+    marginTop: 12,
   },
 });

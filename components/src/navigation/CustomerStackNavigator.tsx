@@ -2,6 +2,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {CreateCustomers} from '../screens/customers';
 import {ListCustomers} from '../screens/customers';
 import {DetailCustomers} from '../screens/customers';
+
 import {Button} from 'react-native';
 
 export type CustomerStackParamList = {

@@ -1,9 +1,13 @@
 import {
   Button,
+  Keyboard,
+  KeyboardAvoidingView,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 
@@ -18,42 +22,42 @@ type CreateProjectsProps = NativeStackScreenProps<
 export const CreateProjects = ({navigation, route}: CreateProjectsProps) => {
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          flex: 1,
-        }}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text style={{padding: 7}}>Cliente</Text>
-          <TextInput
-            style={{borderWidth: 1}}
-            placeholder="Introduzca nombre de cliente"
-          />
-          <Text style={{padding: 7}}>Titulo</Text>
-          <TextInput
-            style={{borderWidth: 1}}
-            placeholder="Introduzca Titulo de proyecto"
-          />
-          <Text style={{padding: 7}}>Importe</Text>
-          <TextInput
-            style={{borderWidth: 1}}
-            placeholder="Introduzca importe"
-          />
-          <Text style={{padding: 7}}>Descripción</Text>
-          <TextInput
-            style={{borderWidth: 1}}
-            placeholder="Escriba Descripción"
-          />
+      <KeyboardAvoidingView
+        style={{flex: 1}}
+        behavior="padding"
+        enabled
+        keyboardVerticalOffset={150}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <ScrollView>
+            <View style={styles.inner}>
+              <Text>Cliente</Text>
+              <TextInput
+                placeholder="Introduzca Cliente"
+                style={styles.textInput}
+              />
+              <Text>Título</Text>
+              <TextInput
+                placeholder="Introduzca Tílulo"
+                style={styles.textInput}
+              />
+              <Text>Importe</Text>
+              <TextInput
+                placeholder="Introduzca Importe"
+                style={styles.textInput}
+              />
+              <Text>Importe</Text>
+              <TextInput
+                placeholder="Introduzca Importe"
+                style={styles.textInput}
+              />
 
-          <Button title="Aceptar" />
-        </View>
-
-        <View style={styles.bottomMenu}></View>
-      </View>
+              <View style={styles.btnContainer}>
+                <Button title="Crear" onPress={() => null} />
+              </View>
+            </View>
+          </ScrollView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
@@ -62,60 +66,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  search: {
-    flexDirection: 'row',
-    backgroundColor: '#f7f7f7',
-    height: 50,
+  inner: {
+    padding: 24,
+    flex: 1,
+    justifyContent: 'space-around',
   },
-  items: {
-    flexDirection: 'row', // Items horizontalmente
-    height: 50,
-    backgroundColor: 'tomato',
-    borderBottomColor: '#f9f9f9',
+  header: {
+    fontSize: 36,
+    marginBottom: 48,
   },
-  itemsBotton: {
-    flexDirection: 'row', // Items horizontalmente
-    height: 50,
+  textInput: {
+    height: 40,
+    borderColor: '#000000',
+    borderBottomWidth: 1,
+    marginBottom: 36,
   },
-  item: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexGrow: 1,
-    paddingHorizontal: 10,
-  },
-  itemBotton: {
-    borderTopColor: '#d7d7d7',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexGrow: 1,
-  },
-
-  scrollViewContent: {
-    backgroundColor: '#ffffff',
-  },
-  bottomMenu: {
-    backgroundColor: '#ffffff',
-    height: 50,
-    flexDirection: 'row',
-  },
-  buttonMap: {
-    position: 'absolute',
-    bottom: 74,
-    paddingHorizontal: 20,
-    backgroundColor: 'black',
-    borderRadius: 20,
-    elevation: 3,
-    width: 120,
-    left: '50%',
-    marginLeft: -60,
-    alignItems: 'center',
-  },
-  textButton: {
-    fontSize: 15,
-    lineHeight: 21,
-    paddingVertical: 12,
-    fontWeight: 'bold',
-
-    color: 'white',
+  btnContainer: {
+    backgroundColor: 'white',
+    marginTop: 12,
   },
 });
