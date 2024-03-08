@@ -1,4 +1,4 @@
-import {View, SafeAreaView, Text} from 'react-native';
+import {View, SafeAreaView, Text, TextInput, StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
@@ -14,28 +14,37 @@ export const DetailProjects = ({navigation, route}: DetailProjectsProps) => {
   const data = projects.find(project => project.id === route.params.id);
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={styles.container}>
       <ScrollView>
-        <View style={{padding: 7, flexDirection: 'row'}}>
-          <Text style={{fontWeight: 'bold'}}>Cliente: </Text>
-          <Text>{data?.customer}</Text>
-        </View>
-        <View style={{padding: 7, flexDirection: 'row'}}>
-          <Text style={{fontWeight: 'bold'}}>Titulo: </Text>
-          <Text>{data?.name}</Text>
-        </View>
-        <View style={{padding: 7, flexDirection: 'row'}}>
-          <Text style={{fontWeight: 'bold'}}>Importe: </Text>
-          <Text>{data?.price}€</Text>
-        </View>
-        <View
-          style={{
-            padding: 10,
-            justifyContent: 'center',
-          }}>
-          <Text>{data?.description}</Text>
+        <View style={styles.inner}>
+          <Text style={styles.title}>Cliente</Text>
+          <Text style={styles.text}>{data?.customer}</Text>
+          <Text style={styles.title}>Titulo</Text>
+          <Text style={styles.text}>{data?.name}</Text>
+          <Text style={styles.title}>Precio</Text>
+          <Text style={styles.text}>{data?.price}€</Text>
+          <Text style={styles.title}>Descripción</Text>
+          <Text style={styles.text}>{data?.description}</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  inner: {
+    padding: 24,
+    flex: 1,
+  },
+  title: {
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  text: {
+    height: 35,
+    marginBottom: 5,
+  },
+});

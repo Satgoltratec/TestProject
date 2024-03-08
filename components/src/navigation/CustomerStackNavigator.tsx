@@ -43,20 +43,3 @@ export const CustomerStackNavigator = () => {
     </RootStack.Navigator>
   );
 };
-
-{
-  /* <Button
-onPress={() => 
-  navigation.navigate('CreateCustomers')}
-title="Crear"
-/> */
-}
-
-// {{
-//   headerRight: () => (
-//     <Button
-//       onPress={() => navigation.navigate('CreateCustomers')}
-//       title="Crear"
-//     />
-//   ),
-// }}

@@ -1,4 +1,4 @@
-import {View, SafeAreaView, Text, TextInput} from 'react-native';
+import {View, SafeAreaView, Text, TextInput, StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
@@ -16,40 +16,44 @@ export const DetailCustomers = ({navigation, route}: DetailCustomersProps) => {
     <SafeAreaView style={{flex: 1}}>
       <SafeAreaView style={{flex: 1}}>
         <ScrollView>
-          <View style={{padding: 3, flexDirection: 'row'}}>
-            <Text style={{fontWeight: 'bold'}}>Nombre: </Text>
-            <Text>{data?.name}</Text>
-          </View>
-          <View style={{padding: 3, flexDirection: 'row'}}>
-            <Text style={{fontWeight: 'bold'}}>DNI: </Text>
-            <Text>{data?.dni}</Text>
-          </View>
-          <View style={{padding: 3, flexDirection: 'row'}}>
-            <Text style={{fontWeight: 'bold'}}>Dirección: </Text>
-            <Text>{data?.address}</Text>
-          </View>
-          <View style={{padding: 3, flexDirection: 'row'}}>
-            <Text style={{fontWeight: 'bold'}}>Código Postal: </Text>
-            <Text>{data?.postcode}</Text>
-          </View>
-          <View style={{padding: 3, flexDirection: 'row'}}>
-            <Text style={{fontWeight: 'bold'}}>Localidad: </Text>
-            <Text>{data?.locality}</Text>
-          </View>
-          <View style={{padding: 3, flexDirection: 'row'}}>
-            <Text style={{fontWeight: 'bold'}}>Provincia: </Text>
-            <Text>{data?.province}</Text>
-          </View>
-          <View style={{padding: 3, flexDirection: 'row'}}>
-            <Text style={{fontWeight: 'bold'}}>Pais: </Text>
-            <Text>{data?.country}</Text>
-          </View>
-          <View style={{padding: 3, flexDirection: 'row'}}>
-            <Text style={{fontWeight: 'bold'}}>Teléfono: </Text>
-            <Text>{data?.telephone1}</Text>
+          <View style={styles.inner}>
+            <Text style={styles.title}>Nombre </Text>
+            <Text style={styles.text}>{data?.name}</Text>
+            <Text style={styles.title}>DNI </Text>
+            <Text style={styles.text}>{data?.dni}</Text>
+            <Text style={styles.title}>Dirección </Text>
+            <Text style={styles.text}>{data?.address}</Text>
+            <Text style={styles.title}>Código Postal </Text>
+            <Text style={styles.text}>{data?.postcode}</Text>
+            <Text style={styles.title}>Localidad </Text>
+            <Text style={styles.text}>{data?.postcode}</Text>
+            <Text style={styles.title}>Provincia </Text>
+            <Text style={styles.text}>{data?.province}</Text>
+            <Text style={styles.title}>País </Text>
+            <Text style={styles.text}>{data?.country}</Text>
+            <Text style={styles.title}>Teléfono </Text>
+            <Text style={styles.text}>{data?.telephone1}</Text>
           </View>
         </ScrollView>
       </SafeAreaView>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  inner: {
+    padding: 24,
+    flex: 1,
+  },
+  title: {
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  text: {
+    height: 35,
+    marginBottom: 5,
+  },
+});
