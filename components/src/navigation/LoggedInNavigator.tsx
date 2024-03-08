@@ -28,7 +28,7 @@ function CustomDrawerContent(props: any) {
   const {logout} = useContext(AuthContext);
   return (
     <DrawerContentScrollView {...props}>
-      <View>
+      <View style={{padding: 20}}>
         <Text>Aqui va el nombre del usuario</Text>
       </View>
       <DrawerItemList {...props} />
