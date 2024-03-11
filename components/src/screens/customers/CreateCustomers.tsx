@@ -23,10 +23,8 @@ export const CreateCustomers = ({navigation, route}: CreateCustomersProps) => {
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
-        style={{flex: 1}}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        enabled
-        keyboardVerticalOffset={Platform.select({ios: 180, android: 230})}>
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={160}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ScrollView>
             <View style={styles.inner}>
@@ -107,3 +105,17 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
 });
+
+{
+  /* <KeyboardAvoidingView
+        style={{flex: 1}}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        enabled
+        keyboardVerticalOffset={Platform.select({ios: 180, android: 230})}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+
+          sadfdsf
+        </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView> */
+}

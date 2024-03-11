@@ -7,6 +7,11 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  TouchableWithoutFeedback,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  ScrollView,
 } from 'react-native';
 import {useState, useContext} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -30,7 +35,7 @@ export function LoginScreen({navigation}: LoginScreenProps) {
         <Text>Usuario</Text>
         <TextInput style={styles.textInput} />
         <Text>Contraseña</Text>
-        <TextInput style={styles.textInput} />
+        <TextInput style={styles.textInput} secureTextEntry={true} />
         <View style={{alignItems: 'flex-end'}}>
           <Pressable onPress={() => navigation.navigate('RecoverPassScreen')}>
             <Text style={styles.textRecoverPass}>Recuperar contraseña </Text>
@@ -68,7 +73,6 @@ export function LoginScreen({navigation}: LoginScreenProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // marginBottom: 300,
   },
   inner: {
     padding: 24,

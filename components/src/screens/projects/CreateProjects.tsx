@@ -2,6 +2,7 @@ import {
   Button,
   Keyboard,
   KeyboardAvoidingView,
+  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -23,10 +24,8 @@ export const CreateProjects = ({navigation, route}: CreateProjectsProps) => {
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
-        style={{flex: 1}}
-        behavior="padding"
-        enabled
-        keyboardVerticalOffset={150}>
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={Platform.select({ios: 160})}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ScrollView>
             <View style={styles.inner}>
@@ -83,6 +82,6 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     backgroundColor: 'white',
-    marginTop: 12,
+    marginTop: 15,
   },
 });

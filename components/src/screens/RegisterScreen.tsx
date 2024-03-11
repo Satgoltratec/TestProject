@@ -5,6 +5,10 @@ import {
   Text,
   View,
   TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 
 import {GuestStackParamList} from '../navigation';
@@ -18,26 +22,39 @@ type RegisterProps = NativeStackScreenProps<
 export function RegisterScreen({navigation}: RegisterProps) {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.inner}>
-        <Text>Correo</Text>
-        <TextInput style={styles.textInput} placeholder="Introduzca Correo" />
-        <Text>Usuario</Text>
-        <TextInput style={styles.textInput} placeholder="Introduzca Usuario" />
-        <Text>Contraseña</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Introduzca Contraseña"
-        />
+      <KeyboardAvoidingView
+        style={{flex: 1}}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={Platform.select({ios: 160})}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.inner}>
+            <Text>Correo</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Introduzca Correo"
+            />
+            <Text>Usuario</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Introduzca Usuario"
+            />
+            <Text>Contraseña</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Introduzca Contraseña"
+            />
 
-        <TextInput
-          style={styles.textInput}
-          placeholder="Introduzca Contraseña de nuevo"
-        />
+            <TextInput
+              style={styles.textInput}
+              placeholder="Introduzca Contraseña de nuevo"
+            />
 
-        <View style={styles.btnContainer}>
-          <Button title="Registrarse" onPress={() => navigation.goBack()} />
-        </View>
-      </View>
+            <View style={styles.btnContainer}>
+              <Button title="Registrarse" onPress={() => navigation.goBack()} />
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
