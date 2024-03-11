@@ -26,55 +26,40 @@ export function LoginScreen({navigation}: LoginScreenProps) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          flex: 1,
-        }}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text style={{padding: 7}}>Usuario</Text>
-          <TextInput
-            style={{borderWidth: 1}}
-            placeholder="Introduzca Usuario"
+      <View style={styles.inner}>
+        <Text>Usuario</Text>
+        <TextInput style={styles.textInput} />
+        <Text>Contraseña</Text>
+        <TextInput style={styles.textInput} />
+        <View style={{alignItems: 'flex-end'}}>
+          <Pressable onPress={() => navigation.navigate('RecoverPassScreen')}>
+            <Text style={styles.textRecoverPass}>Recuperar contraseña </Text>
+          </Pressable>
+        </View>
+        <View style={styles.btnContainer}>
+          <Button
+            title="Entrar"
+            onPress={() => login('miusuario', 'micontraseña')}
           />
-          <Text style={{padding: 7}}>Contraseña</Text>
-          <TextInput
-            style={{borderWidth: 1}}
-            placeholder="Introduzca Contraseña"
-          />
-          <View style={{padding: 7}}>
-            <Pressable onPress={() => navigation.navigate('RecoverPassScreen')}>
-              <Text>He olvidado mi contraseña </Text>
-            </Pressable>
-            <Button
-              title="Entrar"
-              onPress={() => login('miusuario', 'micontraseña')}
-            />
+        </View>
+      </View>
+      <View style={styles.bottomMenu}>
+        {/* Barra Inferior */}
+
+        <Pressable
+          style={styles.itemBotton}
+          onPress={() => navigation.navigate('LOPDScreen')}>
+          <View>
+            <Text>LOPD</Text>
           </View>
-        </View>
-
-        <View style={styles.bottomMenu}>
-          {/* Barra Inferior */}
-
-          <Pressable
-            style={styles.itemBotton}
-            onPress={() => navigation.navigate('LOPDScreen')}>
-            <View>
-              <Text>LOPD</Text>
-            </View>
-          </Pressable>
-          <Pressable
-            style={styles.itemBotton}
-            onPress={() => navigation.navigate('RegisterScreen')}>
-            <View>
-              <Text>Registrarse</Text>
-            </View>
-          </Pressable>
-        </View>
+        </Pressable>
+        <Pressable
+          style={styles.itemBotton}
+          onPress={() => navigation.navigate('RegisterScreen')}>
+          <View>
+            <Text>Registrarse</Text>
+          </View>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -83,62 +68,39 @@ export function LoginScreen({navigation}: LoginScreenProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // marginBottom: 300,
   },
-  search: {
-    flexDirection: 'row',
-    backgroundColor: '#f7f7f7',
-    height: 50,
-  },
-  items: {
-    flexDirection: 'row', // Items horizontalmente
-    height: 50,
-    backgroundColor: 'tomato',
-    borderBottomColor: '#f9f9f9',
-  },
-  itemsBotton: {
-    flexDirection: 'row', // Items horizontalmente
-    height: 50,
-  },
-  item: {
+  inner: {
+    padding: 24,
+    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    flexGrow: 1,
-    paddingHorizontal: 10,
-  },
-  itemBotton: {
-    borderTopColor: '#d7d7d7',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexGrow: 1,
   },
 
-  scrollViewContent: {
-    backgroundColor: '#ffffff',
+  textInput: {
+    height: 40,
+    borderColor: '#000000',
+    borderBottomWidth: 1,
+    marginBottom: 25,
+  },
+  textRecoverPass: {
+    height: 20,
+    marginBottom: 1,
+  },
+
+  btnContainer: {
+    backgroundColor: 'white',
+    marginTop: 5,
   },
   bottomMenu: {
     backgroundColor: '#ffffff',
     height: 50,
     flexDirection: 'row',
   },
-  buttonMap: {
-    position: 'absolute',
-    bottom: 74,
-    paddingHorizontal: 20,
-    backgroundColor: 'black',
-    borderRadius: 20,
-    elevation: 3,
-    width: 120,
-    left: '50%',
-    marginLeft: -60,
+  itemBotton: {
+    borderTopColor: '#d7d7d7',
+    justifyContent: 'center',
     alignItems: 'center',
-  },
-  textButton: {
-    fontSize: 15,
-    lineHeight: 21,
-    paddingVertical: 12,
-    fontWeight: 'bold',
-
-    color: 'white',
+    flexGrow: 1,
   },
 });
 

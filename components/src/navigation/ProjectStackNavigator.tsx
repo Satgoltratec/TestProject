@@ -5,6 +5,8 @@ import {DetailProjects} from '../screens/projects';
 import {CreateProjects} from '../screens/projects';
 import {Button} from 'react-native';
 
+import 'react-native-gesture-handler';
+
 export type ProjectStackParamList = {
   ListProjects: undefined;
   DetailProjects: {id: number};

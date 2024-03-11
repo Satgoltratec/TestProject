@@ -24,9 +24,9 @@ export const CreateCustomers = ({navigation, route}: CreateCustomersProps) => {
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
         style={{flex: 1}}
-        behavior="padding"
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         enabled
-        keyboardVerticalOffset={150}>
+        keyboardVerticalOffset={Platform.select({ios: 180, android: 230})}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ScrollView>
             <View style={styles.inner}>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inner: {
-    padding: 24,
+    padding: 20,
     flex: 1,
     justifyContent: 'space-around',
   },

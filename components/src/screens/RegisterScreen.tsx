@@ -18,34 +18,25 @@ type RegisterProps = NativeStackScreenProps<
 export function RegisterScreen({navigation}: RegisterProps) {
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          flex: 1,
-        }}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text style={{padding: 7}}>Correo electronico</Text>
-          <TextInput style={{borderWidth: 1}} placeholder="Introduzca Correo" />
-          <Text style={{padding: 7}}>Usuario</Text>
-          <TextInput
-            style={{borderWidth: 1}}
-            placeholder="Introduzca Usuario"
-          />
-          <Text style={{padding: 7}}>Contraseña</Text>
-          <TextInput
-            style={{borderWidth: 1}}
-            placeholder="Introduzca Contraseña"
-          />
-          <Text style={{padding: 7}}>Repita Contraseña</Text>
-          <TextInput style={{borderWidth: 1}} placeholder="escriba de nuevo" />
-          <Button onPress={() => navigation.goBack()} title="Aceptar" />
-        </View>
+      <View style={styles.inner}>
+        <Text>Correo</Text>
+        <TextInput style={styles.textInput} placeholder="Introduzca Correo" />
+        <Text>Usuario</Text>
+        <TextInput style={styles.textInput} placeholder="Introduzca Usuario" />
+        <Text>Contraseña</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Introduzca Contraseña"
+        />
 
-        <View style={styles.bottomMenu}></View>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Introduzca Contraseña de nuevo"
+        />
+
+        <View style={styles.btnContainer}>
+          <Button title="Registrarse" onPress={() => navigation.goBack()} />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -54,61 +45,38 @@ export function RegisterScreen({navigation}: RegisterProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // marginBottom: 300,
   },
-  search: {
-    flexDirection: 'row',
-    backgroundColor: '#f7f7f7',
-    height: 50,
-  },
-  items: {
-    flexDirection: 'row', // Items horizontalmente
-    height: 50,
-    backgroundColor: 'tomato',
-    borderBottomColor: '#f9f9f9',
-  },
-  itemsBotton: {
-    flexDirection: 'row', // Items horizontalmente
-    height: 50,
-  },
-  item: {
+  inner: {
+    padding: 24,
+    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    flexGrow: 1,
-    paddingHorizontal: 10,
-  },
-  itemBotton: {
-    borderTopColor: '#d7d7d7',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexGrow: 1,
   },
 
-  scrollViewContent: {
-    backgroundColor: '#ffffff',
+  textInput: {
+    height: 40,
+    borderColor: '#000000',
+    borderBottomWidth: 1,
+    marginBottom: 25,
+  },
+  textRecoverPass: {
+    height: 20,
+    marginBottom: 1,
+  },
+
+  btnContainer: {
+    backgroundColor: 'white',
+    marginTop: 5,
   },
   bottomMenu: {
     backgroundColor: '#ffffff',
     height: 50,
     flexDirection: 'row',
   },
-  buttonMap: {
-    position: 'absolute',
-    bottom: 74,
-    paddingHorizontal: 20,
-    backgroundColor: 'black',
-    borderRadius: 20,
-    elevation: 3,
-    width: 120,
-    left: '50%',
-    marginLeft: -60,
+  itemBotton: {
+    borderTopColor: '#d7d7d7',
+    justifyContent: 'center',
     alignItems: 'center',
-  },
-  textButton: {
-    fontSize: 15,
-    lineHeight: 21,
-    paddingVertical: 12,
-    fontWeight: 'bold',
-
-    color: 'white',
+    flexGrow: 1,
   },
 });
