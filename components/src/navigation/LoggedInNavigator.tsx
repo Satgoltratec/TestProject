@@ -24,7 +24,7 @@ export type LoggedInStackParamList = {
 
 const RootDrawer = createDrawerNavigator<LoggedInStackParamList>();
 
-function CustomDrawerContent(props: any) {
+export function CustomDrawerContent(props: any) {
   const {logout} = useContext(AuthContext);
   return (
     <DrawerContentScrollView {...props}>
@@ -48,12 +48,12 @@ export const LoggedInNavigator = () => {
       <RootDrawer.Screen
         name="CustomerStackNavigator"
         component={CustomerStackNavigator}
-        options={{title: 'Clientes'}}
+        options={{title: 'Clientes', headerShown: false}}
       />
       <RootDrawer.Screen
         name="ProjectStackNavigator"
         component={ProjectStackNavigator}
-        options={{title: 'Proyectos'}}
+        options={{title: 'Proyectos', headerShown: false}}
       />
     </RootDrawer.Navigator>
   );

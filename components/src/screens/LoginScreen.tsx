@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import {useState, useContext} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-
+import Icon from 'react-native-vector-icons/Octicons';
 import React from 'react';
 import {AuthContext} from '../../context/AuthContext';
 import {GuestStackParamList} from '../navigation';
@@ -33,6 +33,8 @@ export function LoginScreen({navigation}: LoginScreenProps) {
     <SafeAreaView style={styles.container}>
       <View style={styles.inner}>
         <Text>Usuario</Text>
+        <Icon name="three-bars" size={30} />
+
         <TextInput style={styles.textInput} />
         <Text>Contraseña</Text>
         <TextInput style={styles.textInput} secureTextEntry={true} />
