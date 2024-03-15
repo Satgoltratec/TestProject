@@ -3,7 +3,7 @@ import {CreateCustomers} from '../screens/customers';
 import {ListCustomers} from '../screens/customers';
 import {DetailCustomers} from '../screens/customers';
 import {DrawerActions} from '@react-navigation/native';
-
+import Icon from 'react-native-vector-icons/Octicons';
 import {Button} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
@@ -23,15 +23,19 @@ export const CustomerStackNavigator = () => {
           title: 'Clientes',
 
           headerRight: () => (
-            <Button
+            <Icon
+              name="plus"
+              style={{marginRight: 10}}
+              size={23}
               onPress={() => navigation.navigate('CreateCustomers')}
-              title="Crear"
             />
           ),
           headerLeft: () => (
-            <Button
+            <Icon
+              style={{marginLeft: 10}}
+              name="three-bars"
+              size={23}
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-              title="DRAWER"
             />
           ),
         })}

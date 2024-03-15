@@ -4,7 +4,7 @@ import {ListProjects} from '../screens/projects';
 import {DetailProjects} from '../screens/projects';
 import {CreateProjects} from '../screens/projects';
 import {Button} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Octicons';
 import 'react-native-gesture-handler';
 import {DrawerActions} from '@react-navigation/native';
 
@@ -25,15 +25,20 @@ export const ProjectStackNavigator = () => {
           title: 'Proyectos',
 
           headerRight: () => (
-            <Button
+            <Icon
+              name="plus"
+              style={{marginRight: 10}}
+              size={23}
               onPress={() => navigation.navigate('CreateProjects')}
-              title="Crear"
             />
           ),
+
           headerLeft: () => (
-            <Button
+            <Icon
+              style={{marginLeft: 10}}
+              name="three-bars"
+              size={23}
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-              title="DRAWER"
             />
           ),
         })}
